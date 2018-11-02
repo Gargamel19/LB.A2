@@ -55,8 +55,7 @@ fac(0, s(0)).
 fac(s(Zahl), FactorialTemp):-
         fac(Zahl, TempErg),
         mul(s(Zahl), TempErg, FactorialTemp).
-
-
+        
 
 lt(0, s(_Y)).
 lt(s(X), s(Y)):-

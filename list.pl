@@ -18,31 +18,31 @@ difflist_delete([H1|T1], L2, L3, ErgList):-
         append(L3, [H1], NewList),
         difflist_delete(T1, L2, NewList, ErgList).
 
-        
 
-        
+
+
 praefix([H|T1], [H|T2]):-
-        praefix_(T1, T2).       
+        praefix_(T1, T2).
 praefix_([], [_H|_T]).
 praefix_([H|T1], [H|T2]):-
         praefix_(T1, T2).
 
-        
+
 suffix(L1, L2):-
         reverse(L1, NewL1),
         reverse(L2, NewL2),
         praefix(NewL1, NewL2).
 
 
-        
-        
+
+
 infix([], []).
 infix([H|T1], [_H2|T2]):-
         infix_([H|T1], T2).
-        
+
 infix_([H|T], [H|T1]):-
         infix_1([H|T], [H|T1]).
-        
+
 infix_([H1|T], [_H|T1]):-
         infix_([H1|T], T1).
 
@@ -64,7 +64,7 @@ del_element_(a, Element, [Element|T], ReturnList):-
 del_element_(l, Element, List, ReturnList):-
       reverse(List, NewList),
       del_element_(e, Element, NewList, ReturnList).
-      
+
 del_element_(_Position, _Element, [], _ReturnList).
 del_element_(Position, Element, [H|T], ReturnList):-
       del_element_(Position, Element, T, [H|ReturnList]).
@@ -89,5 +89,28 @@ substitute_(Position, Element, NewElement, [H|T], ReturnList):-
 
 
 
-eo_count(L, Even, Odd):-
-      length(L, Even).
+eo_count(L, Even, Odd) :- eo_count_without_self([L], Even, Odd).
+
+eo_count_without_self([],0,0).
+eo_count_without_self([Head|Tail],Even,Odd):-
+  eo_count_single(Head,HeadEven,HeadOdd),
+  eo_count_without_self(Tail,TailEven,TailOdd),
+  Even is HeadEven + TailEven,
+  Odd is HeadOdd + TailOdd.
+
+eo_count_single(_,0,0).
+eo_count_single(List,Even,Odd):-
+  is_list(List),
+  evenList(List),
+  eo_count_without_self(List,Even1,Odd),
+  Even is Even1+1.
+eo_count_single(List,Even,Odd):-
+  is_list(List),
+  eo_count_without_self(List,Even,Odd1),
+  Odd is Odd1 + 1.
+
+evenList(List) :-
+  length(List, Length), even(Length).
+even(Wert):- 0 is Wert mod 2.
+
+

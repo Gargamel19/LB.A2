@@ -8,7 +8,7 @@ public class S {
 	public S() {
 		
 	}
-	
+
 	public S getNext() {
 		return next;
 	}
@@ -16,6 +16,10 @@ public class S {
 	public void setNext() {
 		this.isNull = false;
 		this.next = new S();
+	}
+	public void setNext(S next) {
+		this.isNull = false;
+		this.next = next;
 	}
 	
 	public boolean isLast() {

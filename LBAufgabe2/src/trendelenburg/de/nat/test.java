@@ -63,20 +63,47 @@ public class test {
 		System.out.println(snat.sub(snat.nat2s(6), snat.nat2s(6)).toString());
 		
 		System.out.println("");
-		System.out.println("Power 6 - 4:");
+		System.out.println("Power 6^4:");
 		System.out.println(snat.nat2s(6));
 		System.out.println(snat.nat2s(4));
 		System.out.println(snat.power(snat.nat2s(6), snat.nat2s(4)).toString());
 		System.out.println("");
-		System.out.println("Power 4 - 6:");
+		System.out.println("Power 4^6:");
 		System.out.println(snat.nat2s(4));
 		System.out.println(snat.nat2s(6));
-		System.out.println(snat.power(snat.nat2s(4), snat.nat2s(6)).toString());
+		System.out.println(snat.s2nat(snat.power(snat.nat2s(4), snat.nat2s(6))) + ": " + snat.power(snat.nat2s(4), snat.nat2s(6)).toString());
 		System.out.println("");
-		System.out.println("Power 6 - 6:");
+		System.out.println("Power 6^2:");
 		System.out.println(snat.nat2s(6));
+		System.out.println(snat.nat2s(2));
+		System.out.println(snat.s2nat(snat.power(snat.nat2s(6), snat.nat2s(2))) + ": " + snat.power(snat.nat2s(6), snat.nat2s(2)).toString());
+		System.out.println("");
+		System.out.println("Fac 6:");
+		System.out.println(snat.s2nat(snat.fac(snat.nat2s(6))) + ": " + snat.fac(snat.nat2s(6)).toString());
+		System.out.println("");
+		System.out.println("Fac 0:");
+		System.out.println(snat.s2nat(snat.fac(snat.nat2s(0))) + ": " + snat.fac(snat.nat2s(0)).toString());
+		System.out.println("");
+		System.out.println("Fac 1:");
+		System.out.println(snat.s2nat(snat.fac(snat.nat2s(1))) + ": " + snat.fac(snat.nat2s(1)).toString());
+		System.out.println("");
+		System.out.println("lt:");
+		System.out.println(snat.nat2s(6) +" < "+ snat.nat2s(6) + ": " + snat.lt(snat.nat2s(6), snat.nat2s(6)));
+		System.out.println("");
+		System.out.println(snat.nat2s(6) +" < "+ snat.nat2s(8) + ": " + snat.lt(snat.nat2s(6), snat.nat2s(8)));
+		System.out.println("");
+		System.out.println(snat.nat2s(8) +" < "+ snat.nat2s(6) + ": " + snat.lt(snat.nat2s(8), snat.nat2s(6)));
+		
+		System.out.println("");
+		System.out.println("modulo 3 % 2:");
+		System.out.println(snat.nat2s(3));
+		System.out.println(snat.nat2s(2));
+		System.out.println(snat.s2nat(snat.mods(snat.nat2s(3), snat.nat2s(2))) + ": " + snat.mods(snat.nat2s(3), snat.nat2s(2)).toString());
+		System.out.println("");
+		System.out.println("modulo 6 % 2:");
 		System.out.println(snat.nat2s(6));
-		System.out.println(snat.power(snat.nat2s(6), snat.nat2s(6)).toString());
+		System.out.println(snat.nat2s(2));
+		System.out.println(snat.s2nat(snat.mods(snat.nat2s(6), snat.nat2s(2))) + ": " + snat.mods(snat.nat2s(6), snat.nat2s(2)).toString());
 		
 	}
 	

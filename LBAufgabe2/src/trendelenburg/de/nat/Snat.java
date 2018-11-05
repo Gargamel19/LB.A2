@@ -8,7 +8,7 @@ public class Snat {
 	}
 	private int s2nat_(S input, int temp) {
 		// 1. 
-		if (input.isNull) {
+		if (input.isNull()) {
 			return temp++;
 		// 2.
 		}else {
@@ -40,9 +40,9 @@ public class Snat {
 	}
 	
 	public S add(S s1, S s2) {
-		if (s1.isNull) {
+		if (s1.isNull()) {
 			return s2;
-		}else if (s2.isNull){
+		}else if (s2.isNull()){
 			return s1;
 		}
 		S ergebniss = new S();
@@ -53,18 +53,18 @@ public class Snat {
 	}
 	private void add_(S s1, S s2, S ergebnisS) {
 		// 1.
-		if (!s1.isNull) {
+		if (!s1.isNull()) {
 			ergebnisS.setNext();
 			add_(s1.getNext(), s2, ergebnisS.getNext());
 		// 2.
-		}else if (!s2.isNull){
+		}else if (!s2.isNull()){
 			ergebnisS.setNext();
 			add_(s1, s2.getNext(), ergebnisS.getNext());
 		}
 	}
 	
 	public S sub(S s1, S s2) {
-		if (s2.isNull){
+		if (s2.isNull()){
 			return s1;
 		}
 		// 1.
@@ -74,7 +74,7 @@ public class Snat {
 	private S sub_(S s2, S ergebnissS) {
 		
 		// 2. 
-		if (!s2.isNull && !ergebnissS.isNull){
+		if (!s2.isNull() && !ergebnissS.isNull()){
 			// 2.a
 			ergebnissS = ergebnissS.getNext();
 			return sub_(s2.getNext(), ergebnissS);
@@ -90,7 +90,7 @@ public class Snat {
 	}
 	private S mul_(S s1, S s2, S ergebnissS) {
 		// 2.a
-		if (!s1.isNull && !s2.isNull){
+		if (!s1.isNull() && !s2.isNull()){
 			ergebnissS = add(ergebnissS, s1);
 			return mul_(s1, s2.getNext(), ergebnissS);
 		}else {
@@ -107,7 +107,7 @@ public class Snat {
 	}
 	private S power_(S s1, S s2, S ergebnissS) {
 		// 2.a
-		if (!s1.isNull && !s2.isNull){
+		if (!s1.isNull() && !s2.isNull()){
 			ergebnissS = mul(ergebnissS, s1);
 			return power_(s1, s2.getNext(), ergebnissS);
 		}else {
@@ -124,7 +124,7 @@ public class Snat {
 	}
 	private S fac_(S s1, S ergebnissS) {
 		// 2.
-		if (!s1.isNull){
+		if (!s1.isNull()){
 			// 2.a
 			ergebnissS = mul(ergebnissS, s1);
 			return fac_(s1.getNext(), ergebnissS);
@@ -139,10 +139,10 @@ public class Snat {
 	}
 	private boolean lt_(S s1, S s2) {
 		// 1.b
-		if (s2.isNull){
+		if (s2.isNull()){
 			// 1.b.ii
 			return false;
-		}else if (s1.isNull && !s2.isNull){
+		}else if (s1.isNull() && !s2.isNull()){
 			// 1.b.i
 			return true;
 		}else {

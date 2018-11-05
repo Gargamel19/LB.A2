@@ -1,6 +1,10 @@
 % Autor: Ferdinand Trendelenburg
 % Datum: 26.10.2017
 
+nat(0).
+nat(s(X)):-
+  nat(X).
+
 % 1.a
 nat2s(0, 0).
 % 1.b &

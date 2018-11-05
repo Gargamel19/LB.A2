@@ -2,11 +2,9 @@ package trendelenburg.de.nat;
 
 public class S {
 
-	S next;
-	boolean isNull = true;
+	private S next;
 	
 	public S() {
-		
 	}
 
 	public S getNext() {
@@ -14,11 +12,9 @@ public class S {
 	}
 	
 	public void setNext() {
-		this.isNull = false;
 		this.next = new S();
 	}
 	public void setNext(S next) {
-		this.isNull = false;
 		this.next = next;
 	}
 	
@@ -26,14 +22,18 @@ public class S {
 		return (next==null);
 	}
 	
+	public boolean isNull() {
+		return next==null;
+	}
+	
+	
 	@Override
 	public String toString() {
-		if(isNull){
+		if(isNull()){
 			return "0";
 		}else {
 			return "S(" + next.toString() + ")";
 		}
-		
 	}
 	
 }
